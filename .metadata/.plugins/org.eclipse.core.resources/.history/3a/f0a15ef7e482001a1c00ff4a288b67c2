@@ -1,0 +1,16 @@
+package com.mars.generator;
+
+public class Plateau {
+	
+    private Coordinate rightCoordinate = new Coordinate(0, 0);
+    private Coordinate leftCoordinates = new Coordinate(0, 0);
+
+    public Plateau( int rightXCoordinate, final int rightYCoordinate) {
+        this.rightCoordinate = this.rightCoordinate.newCoordinatesForXY(rightXCoordinate, rightYCoordinate);
+    }
+
+    public boolean controlPlateau(final Coordinate coordinates) {
+        return this.leftCoordinates.controlY(coordinates) && this.rightCoordinate.controlX(coordinates);
+    }
+
+}

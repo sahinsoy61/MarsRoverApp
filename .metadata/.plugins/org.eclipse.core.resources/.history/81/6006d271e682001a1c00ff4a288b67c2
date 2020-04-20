@@ -1,0 +1,49 @@
+package com.mars.generator;
+
+public class Coordinate {
+	
+	    private int axisCoordinate;
+	    private int ordinateCoordinate;
+
+	    public Coordinate(int xCoordinate, int yCoordinate) {
+	        this.axisCoordinate = xCoordinate;
+	        this.ordinateCoordinate = yCoordinate;
+	    }
+
+	    public Coordinate newCoordinatesForXY(int valueX, int valueY) {
+	        return new Coordinate(this.axisCoordinate + valueX, this.ordinateCoordinate + valueY);
+	    }
+
+	    @Override
+	    public String toString() {
+	        StringBuilder coordinateOutput = new StringBuilder();
+	        coordinateOutput.append(axisCoordinate);
+	        coordinateOutput.append(" ");
+	        coordinateOutput.append(ordinateCoordinate);
+	        return coordinateOutput.toString();
+	    }
+
+
+	    
+	    public boolean controlY(final Coordinate coordinates) {
+	        return xCoordinateControl(coordinates.axisCoordinate) && yCoordinateControl(coordinates.ordinateCoordinate);
+	    }
+
+	    public Coordinate newCoordinates(final int xCoordinateStepValue, final int yCoordinateStepValue) {
+	        return new Coordinate(axisCoordinate+xCoordinateStepValue, ordinateCoordinate+yCoordinateStepValue);
+	    }
+	    
+	    public boolean controlX(final Coordinate coordinates) {
+	        return xCoordinateControl(coordinates.axisCoordinate) && yCoordinateControl(coordinates.ordinateCoordinate);
+	    }
+	    
+	    private boolean yCoordinateControl(final int yCoordinate) {
+	        return yCoordinate <= this.ordinateCoordinate;
+	    }
+	    
+	    private boolean xCoordinateControl(final int xCoordinate) {
+	        return xCoordinate <= this.axisCoordinate;
+	    }
+
+
+}

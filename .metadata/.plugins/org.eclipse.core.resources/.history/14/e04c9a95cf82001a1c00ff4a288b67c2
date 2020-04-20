@@ -1,0 +1,73 @@
+package com.mars.generator;
+
+public enum Direction {
+
+
+    North(0,1) {
+        @Override
+        public Direction left() {
+            return West;
+        }
+
+        @Override
+        public Direction right() {
+            return East;
+        }
+    },
+
+    South(0,-1) {
+        @Override
+        public Direction right() {
+            return West;
+        }
+
+        @Override
+        public Direction left() {
+            return East;
+        }
+    },
+
+    East(1,0) {
+        @Override
+        public Direction right() {
+            return South;
+        }
+
+        @Override
+        public Direction left() {
+            return North;
+        }
+    },
+
+    West(-1,0) {
+        @Override
+        public Direction right() {
+            return North;
+        }
+
+        @Override
+        public Direction left() {
+            return South;
+        }
+    };
+
+    private final int stepSizeOnXAxis;
+    private final int stepSizeOnYAxis;
+
+    Direction(final int stepSizeOnXAxis, final int stepSizeOnYAxis) {
+        this.stepSizeOnXAxis = stepSizeOnXAxis;
+        this.stepSizeOnYAxis = stepSizeOnYAxis;
+    }
+
+    public abstract Direction right();
+    public abstract Direction left();
+
+    public int stepSizeForXAxis() {
+        return this.stepSizeOnXAxis;
+    }
+
+    public int stepSizeForYAxis() {
+        return this.stepSizeOnYAxis;
+    }
+
+}

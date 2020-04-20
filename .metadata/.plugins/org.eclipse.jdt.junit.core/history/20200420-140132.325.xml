@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MarsroverApplicationTest" project="MarsRoverApplication" tests="9" started="9" failures="0" errors="0" ignored="0">
+  <testsuite name="tests.MarsroverApplicationTest" time="0.001">
+    <testcase name="canRotateLeft" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="canRotateRight" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="canProvideCurrentLocationAsString" classname="tests.MarsroverApplicationTest" time="0.001"/>
+    <testcase name="canRunCommandToRotateLeft" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="canMove" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="canRunCommandWithMultipleInstructions" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="canRunCommandToMove" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="canRunCommandToRotateRight" classname="tests.MarsroverApplicationTest" time="0.0"/>
+    <testcase name="wontDriveOffPlateau" classname="tests.MarsroverApplicationTest" time="0.0"/>
+  </testsuite>
+</testrun>

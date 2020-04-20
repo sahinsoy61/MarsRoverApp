@@ -1,0 +1,51 @@
+package com.mars.base;
+
+
+import com.mars.executer.GenericExecuter;
+import com.mars.parser.ToStringParser;
+import com.mars.generator.Coordinate;
+import com.mars.generator.Direction;
+import com.mars.generator.Plateau;
+import java.util.List;
+
+
+public class MarsRoverApp {
+	
+	    private Coordinate coordinates;
+	    private Direction direction;
+	    private Plateau plateau;
+
+
+	    public MarsRoverApp(final Plateau plateau, final Direction direction, final Coordinate coordinates) {
+	        this.plateau = plateau;
+	        this.direction = direction;
+	        this.coordinates = coordinates;
+	    }
+
+	    public void run(final String value) {
+	        List<GenericExecuter> genericExecuters = new ToStringParser(value).toCommands();
+	        for (GenericExecuter genericExecuter : genericExecuters) {
+	        	genericExecuter.execute(this);
+	        }
+	    }
+
+	    public String location() {
+	        return coordinates.toString() + " " + direction.toString();
+	    }
+
+	    public void spinRight() {
+	        this.direction = this.direction.right();
+	    }
+
+	    public void spinLeft() {
+	        this.direction = this.direction.left();
+	    }
+
+	    public void forwardMove() {
+	        Coordinate afterPosition = coordinates.newCoordinates(direction.sizeXAxis(), direction.sizeYOrdinat());
+
+	        if(plateau.controlPlateau(afterPosition))
+	        	coordinates = coordinates.newCoordinatesFor(direction.sizeXAxis(), direction.sizeYOrdinat());
+	    }
+
+}

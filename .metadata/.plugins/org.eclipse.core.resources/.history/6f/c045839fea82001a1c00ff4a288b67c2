@@ -1,0 +1,73 @@
+package com.mars.generator;
+
+public class Coordinate {
+	
+	    private int axisCoordinate;
+	    private int ordinateCoordinate;
+
+	    public Coordinate(final int xCoordinate, final int yCoordinate) {
+	        this.axisCoordinate = xCoordinate;
+	        this.ordinateCoordinate = yCoordinate;
+	    }
+
+	    public Coordinate newCoordinatesXY(final int xCoordinateStepValue, final int yCoordinateStepValue) {
+	        return new Coordinate(this.axisCoordinate + xCoordinateStepValue, this.ordinateCoordinate + yCoordinateStepValue);
+	    }
+
+	    @Override
+	    public String toString() {
+	        StringBuilder coordinateOutput = new StringBuilder();
+	        coordinateOutput.append(axisCoordinate);
+	        coordinateOutput.append(" ");
+	        coordinateOutput.append(ordinateCoordinate);
+	        return coordinateOutput.toString();
+	    }
+
+	  
+	    private boolean yWithIn( int yCoordinate) {
+			if (yCoordinate <= this.ordinateCoordinate) {
+				return true;
+			} else
+				return false;
+	
+		}
+
+	  
+	    private boolean xWithIn( int xCoordinate) {
+	    	
+		if (xCoordinate <= this.axisCoordinate) {
+			return true;
+		}else
+			return false;
+	    }
+
+		private boolean xOutside(int xCoordinate) {
+	
+			if (xCoordinate <= this.axisCoordinate) {
+				return true;
+			} else
+				return false;
+		}
+
+		private boolean yOutside(int yCoordinate) {
+			if (yCoordinate <= this.ordinateCoordinate) {
+				return true;
+			} else
+				return false;
+	
+		}
+
+	    public Coordinate newCoordinates(final int xCoordinateStepValue,  int yCoordinateStepValue) {
+	        return new Coordinate(axisCoordinate+xCoordinateStepValue, ordinateCoordinate+yCoordinateStepValue);
+	    }
+	    
+	    public boolean outside( Coordinate coordinates) {
+	        return xOutside(coordinates.axisCoordinate) && yOutside(coordinates.ordinateCoordinate);
+	    }
+	    
+	    public boolean within( Coordinate coordinates) {
+	        return xWithIn(coordinates.axisCoordinate) && yWithIn(coordinates.ordinateCoordinate);
+	    }
+
+
+}

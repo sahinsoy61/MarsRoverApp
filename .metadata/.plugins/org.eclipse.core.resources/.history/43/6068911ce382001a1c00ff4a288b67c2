@@ -1,0 +1,16 @@
+package com.mars.generator;
+
+public class Plateau {
+	
+    private Coordinate rightCoordinate = new Coordinate(0, 0);
+    private Coordinate leftCoordinates = new Coordinate(0, 0);
+
+    public Plateau(final int topRightXCoordinate, final int topRightYCoordinate) {
+        this.rightCoordinate = this.rightCoordinate.newCoordinatesFor(topRightXCoordinate, topRightYCoordinate);
+    }
+
+    public boolean hasWithinBounds(final Coordinate coordinates) {
+        return this.leftCoordinates.hasOutsideBounds(coordinates) && this.rightCoordinate.hasWithinBounds(coordinates);
+    }
+
+}

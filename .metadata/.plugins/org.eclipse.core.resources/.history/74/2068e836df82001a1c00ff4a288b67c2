@@ -1,0 +1,62 @@
+package com.mars.parser;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.mars.executer.ForwardMoveExecuter;
+import com.mars.executer.GenericExecuter;
+import com.mars.executer.SpinLeftExecuter;
+import com.mars.executer.SpinRightExecuter;
+
+public class ToStringParser {
+	
+	    public static final String BY_EACH_CHARACTER = "";
+	    public static final int START_INDEX = 0;
+
+	    private static Map<String, GenericExecuter> stringToCommandMap = new HashMap<String, GenericExecuter>() {{
+	        put("L", new SpinLeftExecuter());
+	        put("R", new SpinRightExecuter());
+	        put("M", new ForwardMoveExecuter());
+	    }};
+
+	    private String value;
+
+	    public ToStringParser(final String value) {
+	        this.value = value;
+	    }
+
+	    public List<GenericExecuter> toCommands() {
+		if (null == value || value.trim().length() == 0) {
+			return new ArrayList<GenericExecuter>();
+		}
+	        return buildCommandsList(value);
+	    }
+
+	    private List<GenericExecuter> buildCommandsList(final String commandString) {
+	        List<GenericExecuter> commands = new ArrayList<GenericExecuter>();
+
+	        for(String commandCharacter : commandCharactersFrom(commandString)) {
+	            if (commandCharacter == null) break;
+	            GenericExecuter mappedCommand = lookupEquivalentCommand(commandCharacter.toUpperCase());
+	            commands.add(mappedCommand);
+	        }
+
+	        return commands;
+	    }
+
+//	    private boolean isNullOrEmpty(final String commandString) {
+//	        return (null == commandString || commandString.trim().length() == 0);
+//	    }
+
+	    private String[] commandCharactersFrom(final String commandString) {
+	        return Arrays.copyOfRange(commandString.split(BY_EACH_CHARACTER), START_INDEX, commandString.length() + 1);
+	    }
+
+	    private GenericExecuter lookupEquivalentCommand(final String commandString) {
+	        return stringToCommandMap.get(commandString);
+	    }
+
+}

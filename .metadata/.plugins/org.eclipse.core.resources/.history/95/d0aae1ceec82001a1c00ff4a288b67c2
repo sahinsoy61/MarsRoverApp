@@ -1,0 +1,59 @@
+package com.mars.generator;
+
+public class Coordinate {
+	
+	    private int axisCoordinate;
+	    private int ordinateCoordinate;
+
+	    public Coordinate(final int xCoordinate, final int yCoordinate) {
+	        this.axisCoordinate = xCoordinate;
+	        this.ordinateCoordinate = yCoordinate;
+	    }
+
+	    public Coordinate newCoordinatesXY(final int xCoordinateStepValue, final int yCoordinateStepValue) {
+	        return new Coordinate(this.axisCoordinate + xCoordinateStepValue, this.ordinateCoordinate + yCoordinateStepValue);
+	    }
+
+	    @Override
+	    public String toString() {
+	        StringBuilder coordinateOutput = new StringBuilder();
+	        coordinateOutput.append(axisCoordinate);
+	        coordinateOutput.append(" ");
+	        coordinateOutput.append(ordinateCoordinate);
+	        return coordinateOutput.toString();
+	    }
+
+	  
+	    private boolean yWithIn(final int yCoordinate) {
+	        return yCoordinate <= this.ordinateCoordinate;
+	    }
+
+	  
+	    private boolean xWithIn(final int xCoordinate) {
+	        return xCoordinate <= this.axisCoordinate;
+	    }
+	   
+	    private boolean xOutside(final int xCoordinate) {
+	        return xCoordinate >= this.axisCoordinate;
+	    }
+
+	  
+	    
+	    private boolean yOutside(final int yCoordinate) {
+	        return yCoordinate >= this.ordinateCoordinate;
+	    }
+
+	    public Coordinate newCoordinates(final int xCoordinateStepValue, final int yCoordinateStepValue) {
+	        return new Coordinate(axisCoordinate+xCoordinateStepValue, ordinateCoordinate+yCoordinateStepValue);
+	    }
+	    
+	    public boolean outside(final Coordinate coordinates) {
+	        return xOutside(coordinates.axisCoordinate) && yOutside(coordinates.ordinateCoordinate);
+	    }
+	    
+	    public boolean within(final Coordinate coordinates) {
+	        return xWithIn(coordinates.axisCoordinate) && yWithIn(coordinates.ordinateCoordinate);
+	    }
+
+
+}

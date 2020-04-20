@@ -1,0 +1,67 @@
+package tests;
+
+import static org.junit.Assert.*;
+import junit.framework.Assert;
+
+import org.junit.Test;
+
+import com.mars.generator.Coordinate;
+import com.mars.generator.Direction;
+import com.mars.generator.Plateau;
+import com.mars.base.MarsRoverApp ;
+
+public class MarsroverApplicationTest {
+	
+	@Test
+	public void runToFirstCase() {
+		Plateau plateau = new Plateau(5, 5);
+		Coordinate startingPosition = new Coordinate(1, 2);
+		MarsRoverApp marsRoverApp = new MarsRoverApp(plateau, Direction.North,startingPosition);
+		marsRoverApp.turnLeft();
+		Assert.assertEquals("1 2 W", marsRoverApp.currentLocation());
+	}
+	
+	
+    @Test
+    public void runToFirstCaseMultiple() {
+        //Given
+        Plateau plateau = new Plateau(5,5);
+        Coordinate startingPosition = new Coordinate(1,2);
+        MarsRoverApp marsRoverApp = new MarsRoverApp(plateau, Direction.North, startingPosition);
+        marsRoverApp.run("LMLMLMLMM");
+        Assert.assertEquals("1 3 N", marsRoverApp.currentLocation());
+    }
+	
+	
+	
+
+	@Test
+	public void runToSecondCase() {
+		// Given
+		Plateau plateau = new Plateau(5, 5);
+		Coordinate startingPosition = new Coordinate(3, 3);
+
+		// When
+		MarsRoverApp marsRoverApp = new MarsRoverApp(plateau, Direction.North,
+				startingPosition);
+
+		// then
+		Assert.assertEquals("3 3 N", marsRoverApp.currentLocation());
+	}
+
+    @Test
+    public void runToSecondCaseMultiple() {
+        //Given
+        Plateau plateau = new Plateau(5,5);
+        Coordinate startingPosition = new Coordinate(3,3);
+        MarsRoverApp marsRoverApp = new MarsRoverApp(plateau, Direction.East, startingPosition);
+
+        //When
+        marsRoverApp.run("MMRMMRMRRM");
+
+        //then
+        Assert.assertEquals("5 1 E", marsRoverApp.currentLocation());
+    }
+
+
+}

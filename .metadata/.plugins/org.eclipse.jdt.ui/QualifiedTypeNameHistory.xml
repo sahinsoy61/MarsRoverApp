@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.mars.executer.GenericExecuter"/>
+<fullyQualifiedTypeName name="com.mars.parser.ToStringParser"/>
+<fullyQualifiedTypeName name="com.mars.generator.Coordinate"/>
+<fullyQualifiedTypeName name="com.mars.executer.SpinRightExecuter"/>
+<fullyQualifiedTypeName name="com.mars.executer.SpinLeftExecuter"/>
+<fullyQualifiedTypeName name="com.mars.executer.ForwardMoveExecuter"/>
+<fullyQualifiedTypeName name="junit.framework.Assert"/>
+</qualifiedTypeNameHistroy>

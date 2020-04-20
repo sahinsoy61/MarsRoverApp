@@ -1,0 +1,56 @@
+package com.mars.generator;
+
+public class Coordinate {
+	
+	    private int axisCoordinate;
+	    private int ordinateCoordinate;
+
+	    public Coordinate(final int xCoordinate, final int yCoordinate) {
+	        this.axisCoordinate = xCoordinate;
+	        this.ordinateCoordinate = yCoordinate;
+	    }
+
+	    public Coordinate newCoordinatesFor(final int xCoordinateStepValue, final int yCoordinateStepValue) {
+	        return new Coordinate(this.axisCoordinate + xCoordinateStepValue, this.ordinateCoordinate + yCoordinateStepValue);
+	    }
+
+	    @Override
+	    public String toString() {
+	        StringBuilder coordinateOutput = new StringBuilder();
+	        coordinateOutput.append(axisCoordinate);
+	        coordinateOutput.append(" ");
+	        coordinateOutput.append(ordinateCoordinate);
+	        return coordinateOutput.toString();
+	    }
+
+	  
+	    private boolean isYCoordinateWithinBounds(final int yCoordinate) {
+	        return yCoordinate <= this.ordinateCoordinate;
+	    }
+
+	    private boolean isXCoordinateInOutsideBounds(final int xCoordinate) {
+	        return xCoordinate >= this.axisCoordinate;
+	    }
+
+	    private boolean isXCoordinateWithinBounds(final int xCoordinate) {
+	        return xCoordinate <= this.axisCoordinate;
+	    }
+	   
+	    public boolean hasWithinBounds(final Coordinate coordinates) {
+	        return isXCoordinateWithinBounds(coordinates.axisCoordinate) && isYCoordinateWithinBounds(coordinates.ordinateCoordinate);
+	    }
+	    
+	    private boolean isYCoordinateInOutsideBounds(final int yCoordinate) {
+	        return yCoordinate >= this.ordinateCoordinate;
+	    }
+
+	    public Coordinate newCoordinates(final int xCoordinateStepValue, final int yCoordinateStepValue) {
+	        return new Coordinate(axisCoordinate+xCoordinateStepValue, ordinateCoordinate+yCoordinateStepValue);
+	    }
+	    
+	    public boolean hasOutsideBounds(final Coordinate coordinates) {
+	        return isXCoordinateInOutsideBounds(coordinates.axisCoordinate) && isYCoordinateInOutsideBounds(coordinates.ordinateCoordinate);
+	    }
+
+
+}
